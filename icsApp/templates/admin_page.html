@@ -1,0 +1,571 @@
+<html lang="en-us"><head>
+<title>Select inventory to change | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/changelists.css">
+
+
+    <script type="text/javascript" src="/admin/jsi18n/"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" app-icsApp model-inventory change-list" data-admin-utc-offset="-21600">
+
+<!-- Container -->
+<div id="container">
+
+
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+
+<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+
+        </div>
+
+
+        <div id="user-tools">
+
+                Welcome,
+                <strong>machineshop</strong>.
+
+
+
+                    <a href="/">View site</a> /
+
+
+
+
+
+
+                <a href="/admin/password_change/">Change password</a> /
+
+                <a href="/admin/logout/">Log out</a>
+
+        </div>
+
+
+
+    </div>
+    <!-- END Header -->
+
+<div class="breadcrumbs">
+<a href="/admin/">Home</a>
+› <a href="/admin/icsApp/">Icsapp</a>
+› Inventorys
+</div>
+
+
+
+
+
+
+
+    <!-- Content -->
+    <div id="content" class="flex">
+
+        <h1>Select inventory to change</h1>
+
+  <div id="content-main">
+
+        <ul class="object-tools">
+
+
+            <li>
+
+              <a href="/admin/icsApp/inventory/add/" class="addlink">
+                Add inventory
+              </a>
+            </li>
+
+
+        </ul>
+
+
+    <div class="module filtered" id="changelist">
+
+
+<div id="toolbar"><form id="changelist-search" method="get">
+<div><!-- DIV needed for valid HTML -->
+<label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search"></label>
+<input type="text" size="40" name="q" value="" id="searchbar" autofocus="">
+<input type="submit" value="Search">
+
+
+</div>
+</form></div>
+
+
+
+
+
+
+
+          <div id="changelist-filter">
+            <h2>Filter</h2>
+
+<h3> By item position </h3>
+<ul>
+
+    <li class="selected">
+    <a href="?" title="All">All</a></li>
+
+    <li>
+    <a href="?item_position__isnull=True" title="-">-</a></li>
+
+</ul>
+
+<h3> By category </h3>
+<ul>
+
+    <li class="selected">
+    <a href="?" title="All">All</a></li>
+
+    <li>
+    <a href="?category__isnull=True" title="-">-</a></li>
+
+</ul>
+
+          </div>
+
+
+
+      <form id="changelist-form" method="post" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="o7hRd5VAR188U0ipnkSYy0mNmNjY3cf3ILNV4FyneSPnqUZBTlwtkyKib0i4dQap">
+
+
+
+
+<div class="actions">
+    <label>Action: <select name="action" required="">
+  <option value="" selected="">---------</option>
+
+  <option value="delete_selected">Delete selected inventorys</option>
+
+</select></label><input type="hidden" name="select_across" value="0" class="select-across">
+    <button type="submit" class="button" title="Run the selected action" name="index" value="0">Go</button>
+
+        <span class="action-counter" data-actions-icnt="100" style="display: inline;">0 of 100 selected</span>
+
+        <span class="all" style="display: none;">All 270 selected</span>
+        <span class="question" style="display: none;">
+            <a href="#" title="Click here to select the objects across all pages">Select all 270 inventorys</a>
+        </span>
+        <span class="clear" style="display: none;"><a href="#">Clear selection</a></span>
+
+
+</div>
+
+
+
+
+<div class="results">
+<table id="result_list">
+<thead>
+<tr>
+
+<th scope="col" class="action-checkbox-column">
+
+   <div class="text"><span><input type="checkbox" id="action-toggle"></span></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-item_name">
+
+
+
+   <div class="text"><a href="?o=1.4">Item name</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-quantity">
+
+
+
+   <div class="text"><a href="?o=2.4">Quantity</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-item_position">
+
+
+
+   <div class="text"><a href="?o=3.4">Item position</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-category sorted ascending">
+
+
+       <div class="sortoptions">
+         <a class="sortremove" href="?o=" title="Remove from sorting"></a>
+
+         <a href="?o=-4" class="toggle ascending" title="Toggle sorting"></a>
+       </div>
+
+
+   <div class="text"><a href="?o=-4">Category</a></div>
+   <div class="clear"></div>
+</th>
+</tr>
+</thead>
+<tbody>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="270" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/270/change/">CONN HOUSING XH 8POS 2.5MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="269" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/269/change/">CONN HEADER XH TOP 8POS 2.5MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="268" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/268/change/">CONN HOUSING PH 7POS 2MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="267" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/267/change/">CONN HEADER PH TOP 7POS 2MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="266" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/266/change/">CONN HOUSING 2.5MM XH 3POS</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="265" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/265/change/">CONN HEADER XH TOP 6POS 2.5MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="264" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/264/change/">CONN HOUSING 2.5MM 5POS</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="263" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/263/change/">CONN HEADER XH TOP 5POS 2.5MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="262" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/262/change/">CONN HOUSING 2.5MM 4POS</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="261" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/261/change/">CONN HEADER XH TOP 4POS 2.5MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="260" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/260/change/">CONN HOUSING 2.5MM XH 3POS</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="259" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/259/change/">CONN HEADER XH TOP 3POS 2.5MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="258" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/258/change/">CONN HOUSING PH 2POS 2MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="257" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/257/change/">CONN HEADER PH TOP 2POS 2MM</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="256" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/256/change/">NETGEAR USB WIFI DONGLE + USB</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="255" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/255/change/">POLOLU CONNECTOR PACK MALE</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="254" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/254/change/">16 CONDUCTOR RIBBON CABLE W/ IDC CONNECTORS 20"</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="253" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/253/change/">TRAXXIS DC BRUSHLESS MOTOR</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="252" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/252/change/">ELECTROMAGNET</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="251" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/251/change/">FLEXIFORCE FSR LONG</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="250" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/250/change/">CIRCULAR SOFT POTENTIOMETER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="249" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/249/change/">MEDIUM SIZED FORCE SENSING RESISTORS</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="248" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/248/change/">BAOLIAN PUSH BUTTON BLACK</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="247" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/247/change/">BAOLIAN PUSH BUTTON RED</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="246" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/246/change/">LILY PAD</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="245" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/245/change/">SQUARE FORCE SENSING RESISTOR</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="244" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/244/change/">ROUND FORCE SENSING RESISTOR</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="243" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/243/change/">FORCE SENSING RESISTOR .25" DIAMETER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="242" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/242/change/">SMALL WIRE PIEZO</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="241" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/241/change/">???</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="240" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/240/change/">UHF RFID TAG DRY INLAY</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="239" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/239/change/">IN400 DIODE</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="238" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/238/change/">???</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="237" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/237/change/">SPRINGRC SM-S4303R SERVO PARTS KIT</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="236" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/236/change/">BRUSH 6V DC MOTOR</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="235" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/235/change/">BRUSHED 3V DC MOTOR</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="234" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/234/change/">5V GEARED STEPPER MOTOR</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="233" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/233/change/">UNINSULATED COPPER WIRE</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="232" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/232/change/">0.062" METAL WORK SOLDER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="231" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/231/change/">0.031" 60/40 SOLDER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="230" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/230/change/">UNKNOWN SOLDER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="229" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/229/change/">.025" FLUX GLOWCORE SOLDER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="228" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/228/change/">0.062" 60/40 SOLDER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="227" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/227/change/">12MHz CRYSTAL KIT</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="226" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/226/change/">8MHz CRYSTAL KIT</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="225" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/225/change/">4MHz CRYSTAL KIT</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="224" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/224/change/">JST POWER SUPPLIES</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="223" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/223/change/">25x2 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="222" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/222/change/">20x2 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="221" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/221/change/">19x2 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="220" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/220/change/">17x2 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="219" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/219/change/">15x2 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="218" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/218/change/">11x2PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="217" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/217/change/">10x2 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="216" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/216/change/">9x2 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="215" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/215/change/">7x2 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="214" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/214/change/">35 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="213" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/213/change/">40 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="212" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/212/change/">26 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="211" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/211/change/">24 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="210" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/210/change/">22 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="209" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/209/change/">20 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="208" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/208/change/">16 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="207" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/207/change/">12 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="206" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/206/change/">10 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="205" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/205/change/">7 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="204" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/204/change/">6 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="203" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/203/change/">5 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="202" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/202/change/">4 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="201" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/201/change/">3 PIN MALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="200" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/200/change/">A0090 MICRO SERVO</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="199" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/199/change/">SMALL SERVO</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="198" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/198/change/">FS5106B SERVO</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="197" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/197/change/">SG5010 SERVO</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="196" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/196/change/">40 PIN 90 DEGREE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="195" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/195/change/">35 PIN 90 DEGREE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="194" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/194/change/">25 PIN 90 DEGREE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="193" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/193/change/">20 PIN 90 DEGREE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="192" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/192/change/">6 PIN 90 DEGREE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="191" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/191/change/">5 PIN 90 DEGREE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="190" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/190/change/">4 PIN 90 DEGREE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="189" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/189/change/">3 PIN 90 DEGREE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="188" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/188/change/">2 PIN 90 DEGREE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="187" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/187/change/">10 PIN TALL FEMALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="186" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/186/change/">FS5106B SERVO</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="185" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/185/change/">6 PIN TALL FEMALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="184" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/184/change/">3 PIN TALL FEMALE-MALE HEADER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="183" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/183/change/">40 POSITION MALE/FEMALE HEADER #1992</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="182" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/182/change/">RYBBER BUMPERS</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="181" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/181/change/">DC BARREL JACK FEMALE</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="180" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/180/change/">8 CHANNEL RELAY MODULE</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="179" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/179/change/">AAA BATTERIES</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="178" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/178/change/">1.2V RECHAREABLE</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="177" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/177/change/">AA BATTERIES</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="176" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/176/change/">JST RCY Plug with 10 CM LEADS</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="175" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/175/change/">JST 2-PIN CABLE</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="174" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/174/change/">TAMIYA PLUG W/ 10 CM LEADS</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="173" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/173/change/">9V BATTERIES</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row1"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="172" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/172/change/">9V BATTERIES</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+
+<tr class="row2"><td class="action-checkbox"><input type="checkbox" name="_selected_action" value="171" class="action-select"></td><th class="field-item_name"><a href="/admin/icsApp/inventory/171/change/">MINI 12V BATTERY HOLDER</a></th><td class="field-quantity">-</td><td class="field-item_position">-</td><td class="field-category">-</td></tr>
+
+</tbody>
+</table>
+</div>
+
+
+
+
+
+
+<p class="paginator">
+
+
+    <span class="this-page">1</span>
+
+    <a href="?p=1">2</a>
+
+    <a href="?p=2" class="end">3</a>
+
+
+270 inventorys
+
+
+</p>
+
+      </form>
+    </div>
+  </div>
+
+
+        <br class="clear">
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+
+
+</body></html>

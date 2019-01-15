@@ -39,6 +39,7 @@ def upload_data(request):
         for row in reader:
             data_dict = dict(OrderedDict(row))
             item_count = Inventory.objects.filter(item_name=data_dict['item_name']).count()
+            print(item_count)
             print(data_dict)
             if item_count == 1:
                 form = InventoryForm(data_dict)
